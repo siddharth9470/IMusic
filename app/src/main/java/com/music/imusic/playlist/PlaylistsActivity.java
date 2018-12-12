@@ -5,8 +5,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.music.imusic.R;
 import com.music.imusic.model.Playlist;
@@ -27,6 +30,12 @@ public class PlaylistsActivity extends AppCompatActivity implements PlaylistView
         noPlaylistFound = findViewById(R.id.noPlaylistFound);
         playlistListview = findViewById(R.id.playlistListview);
         playlistPresenter = new PlaylistPresenter(this, new PlaylistInteractor());
+        playlistListview.setOnItemClickListener(new PlaylistViewClickListener());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         playlistPresenter.loadPlaylistFromDB();
     }
 
@@ -64,5 +73,14 @@ public class PlaylistsActivity extends AppCompatActivity implements PlaylistView
         noPlaylistFound.setVisibility(View.GONE);
         playlistAdapter = new PlaylistAdapter(playlistList);
         playlistListview.setAdapter(playlistAdapter);
+    }
+
+    private class PlaylistViewClickListener implements AdapterView.OnItemClickListener {
+
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            TextView playlistName = view.findViewById(R.id.playlist);
+            playlistPresenter.onClickPlaylistView(playlistName.getText().toString());
+        }
     }
 }

@@ -5,6 +5,7 @@ import com.music.imusic.model.Playlist;
 public class CreatePlaylistView {
 
     interface view {
+        void navigateToAllSongsActivity();
         void onSuccessfullyPlaylistCreated();
         void onFailedToCreatePlaylist(String error);
     }

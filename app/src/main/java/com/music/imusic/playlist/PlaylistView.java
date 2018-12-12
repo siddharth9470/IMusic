@@ -14,6 +14,7 @@ public class PlaylistView {
     interface presenter {
         void onClickMenu();
         void loadPlaylistFromDB();
+        void onClickPlaylistView(String playlistName);
     }
 
     interface interactor {

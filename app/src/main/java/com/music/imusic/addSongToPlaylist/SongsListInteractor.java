@@ -23,7 +23,7 @@ public class SongsListInteractor {
 
     public void allSongFromDevice(onFinishRetrieveSongsFromStorage onFinishRetrieveSongsFromStorage) {
         List<Song> songList = null;
-        
+
         final Uri uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
         final String[] cursor_cols = {MediaStore.Audio.Media._ID,
                 MediaStore.Audio.Media.ARTIST, MediaStore.Audio.Media.ALBUM,

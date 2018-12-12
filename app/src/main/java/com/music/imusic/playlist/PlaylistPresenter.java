@@ -34,6 +34,11 @@ public class PlaylistPresenter implements PlaylistView.presenter, PlaylistView.i
     }
 
     @Override
+    public void onClickPlaylistView(String playlistName) {
+
+    }
+
+    @Override
     public void onFinishLoadingPlaylist(List<String> playlistList) {
         if(playlistList == null || playlistList.size() == 0) {
             view.onNoPlaylistFound();

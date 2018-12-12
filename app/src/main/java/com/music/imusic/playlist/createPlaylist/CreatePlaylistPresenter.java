@@ -1,5 +1,6 @@
 package com.music.imusic.playlist.createPlaylist;
 
+import android.content.Intent;
 import android.text.TextUtils;
 
 import com.music.imusic.model.Playlist;
@@ -21,13 +22,15 @@ public class CreatePlaylistPresenter implements CreatePlaylistView.presenter, Cr
 
     @Override
     public void onClickAddSongsInPlaylist() {
-
+        if (view != null) {
+            view.navigateToAllSongsActivity();
+        }
     }
 
     @Override
     public void onClickCreatePlaylist(String playlistName) {
-        if(view != null) {
-            if(!TextUtils.isEmpty(playlistName)) {
+        if (view != null) {
+            if (!TextUtils.isEmpty(playlistName)) {
                 createPlaylistInteractor.createPlaylist(playlistName, this);
             } else {
                 view.onFailedToCreatePlaylist("Enter playlist name");
@@ -37,14 +40,14 @@ public class CreatePlaylistPresenter implements CreatePlaylistView.presenter, Cr
 
     @Override
     public void onSuccessfullyPlaylistCreated() {
-        if(view != null) {
+        if (view != null) {
             view.onSuccessfullyPlaylistCreated();
         }
     }
 
     @Override
     public void onFailedToCreatePlaylist(String error) {
-        if(view != null) {
+        if (view != null) {
             view.onFailedToCreatePlaylist(error);
         }
     }

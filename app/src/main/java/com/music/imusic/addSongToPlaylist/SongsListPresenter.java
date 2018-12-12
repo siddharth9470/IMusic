@@ -18,7 +18,11 @@ public class SongsListPresenter implements SongsListView.presenter,
     @Override
     public void onRetrieveSongsFromStorage(List<Song> songList) {
         if (mainView != null) {
-            mainView.setSongListAdapter(songList);
+            if (songList == null || songList.size() == 0) {
+                mainView.onNoSongFound();
+            } else {
+                mainView.setSongListAdapter(songList);
+            }
         }
     }
 

@@ -7,7 +7,7 @@ import java.util.List;
 public class SongsListView {
 
     interface mainView {
-
+        void onNoSongFound();
         void setSongListAdapter(List<Song> songList);
     }
 
