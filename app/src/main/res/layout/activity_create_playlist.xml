@@ -8,11 +8,24 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="wrap_content">
-        
-        <TextView
-            android:layout_width="20dp"
-            android:layout_height="20dp" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/playlistName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:text="Add songs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/addSong"/>
+
+        <Button
+            android:text="Submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/submit"/>
     </LinearLayout>
 </RelativeLayout>

@@ -7,7 +7,7 @@ public class Song {
     public String songTitle;
     public String songPath;
     public Bitmap songAlbumArt;
-    int songDuration;
+    public int songDuration;
     public String clientName;
     public String clientIP;
 

@@ -4,15 +4,30 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.music.imusic.R;
+import com.music.imusic.model.Playlist;
 
-public class PlaylistsActivity extends AppCompatActivity {
+import java.util.List;
+
+public class PlaylistsActivity extends AppCompatActivity implements PlaylistView.view {
+
+    private TextView noPlaylistFound;
+    private ListView playlistListview;
+    private PlaylistAdapter playlistAdapter;
+    private PlaylistPresenter playlistPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_playlists);
+        noPlaylistFound = findViewById(R.id.noPlaylistFound);
+        playlistListview = findViewById(R.id.playlistListview);
+        playlistPresenter = new PlaylistPresenter(this, new PlaylistInteractor());
+        playlistPresenter.loadPlaylistFromDB();
     }
 
     @Override
@@ -32,10 +47,22 @@ public class PlaylistsActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_user) {
             System.out.println("action_user");
-            //musicPlayerPresenter.onClickMenu();
+            playlistPresenter.onClickMenu();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onNoPlaylistFound() {
+        noPlaylistFound.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onFinishLoadingPlaylist(List<String> playlistList) {
+        noPlaylistFound.setVisibility(View.GONE);
+        playlistAdapter = new PlaylistAdapter(playlistList);
+        playlistListview.setAdapter(playlistAdapter);
     }
 }
