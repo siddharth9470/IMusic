@@ -1,5 +1,6 @@
 package com.music.imusic.playlist;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,7 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.music.imusic.R;
+import com.music.imusic.controls.Contants;
 import com.music.imusic.model.Playlist;
+import com.music.imusic.playlist.playlistDetail.PlaylistDetailsActivity;
 
 import java.util.List;
 
@@ -66,6 +69,14 @@ public class PlaylistsActivity extends AppCompatActivity implements PlaylistView
     @Override
     public void onNoPlaylistFound() {
         noPlaylistFound.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void navigateUserToPlaylistDetails(String playlistName) {
+        Intent intent = new Intent(getApplicationContext(), PlaylistDetailsActivity.class);
+        intent.putExtra(Contants.PLAYLIST_NAME_INTENT, playlistName);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
     @Override

@@ -10,6 +10,7 @@ public class Song {
     public int songDuration;
     public String clientName;
     public String clientIP;
+    public boolean isSongPathSavedInDB;
 
     public Song(String songTitle, String songPath, Bitmap songAlbumArt, int songDuration, String clientName, String clientIP) {
         this.songTitle = songTitle;
@@ -66,6 +67,14 @@ public class Song {
 
     public void setClientIP(String clientIP) {
         this.clientIP = clientIP;
+    }
+
+    public boolean isSongPathSavedInDB() {
+        return isSongPathSavedInDB;
+    }
+
+    public void setSongPathSavedInDB(boolean songPathSavedInDB) {
+        isSongPathSavedInDB = songPathSavedInDB;
     }
 
     @Override

@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.provider.MediaStore;
 
 import com.music.imusic.ApplicationClass;
+import com.music.imusic.database.IMusicDAO;
 import com.music.imusic.model.Song;
 
 import java.io.FileNotFoundException;
@@ -15,6 +16,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SongsListInteractor {
+
+    private IMusicDAO iMusicDAO;
+    private List<Song> lastRetrievedSongListFromDB;
+
+
+    public SongsListInteractor() {
+        iMusicDAO = IMusicDAO.getInstance();
+    }
 
     interface onFinishRetrieveSongsFromStorage {
         void onRetrieveSongsFromStorage(List<Song> songList);
@@ -78,6 +87,18 @@ public class SongsListInteractor {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        this.lastRetrievedSongListFromDB = songList;
         onFinishRetrieveSongsFromStorage.onRetrieveSongsFromStorage(songList);
+    }
+
+    public void saveSongPathInDB(int clickedListViewPosition, String playlistName) {
+        if(this.lastRetrievedSongListFromDB != null &&
+                this.lastRetrievedSongListFromDB.size() > clickedListViewPosition) {
+            iMusicDAO.saveSongsPath(playlistName, lastRetrievedSongListFromDB.get(clickedListViewPosition));
+        }
+    }
+
+    public List<Song> getLastRetrievedSongListFromDB() {
+        return lastRetrievedSongListFromDB;
     }
 }

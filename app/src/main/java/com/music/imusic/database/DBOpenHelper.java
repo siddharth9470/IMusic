@@ -15,22 +15,22 @@ public class DBOpenHelper extends SQLiteOpenHelper {
 
 
     private static final String CREATE_PLAYLIST_TABLE = "CREATE TABLE IF NOT EXISTS "
-            + DatabaseContract.IMusicAppTableConstants.PLAYLIST_TABLE + " ( "
-            + DatabaseContract.IMusicAppTableConstants.ID + ID_TYPE + COMMA
-            + DatabaseContract.IMusicAppTableConstants.PLAYLIST_NAME + TEXT_TYPE + " ) ";
+            + DatabaseContract.IMusicAppTables.PLAYLIST_TABLE + " ( "
+            + DatabaseContract.IMusicAppTables.ID + ID_TYPE + COMMA
+            + DatabaseContract.IMusicAppTables.PLAYLIST_NAME + TEXT_TYPE + " ) ";
 
     private static final String CREATE_PLAYLIST_SONGS_TABLE = "CREATE TABLE IF NOT EXISTS "
-            + DatabaseContract.IMusicAppTableConstants.PLAYLIST_SONGS_TABLE + " ( "
-            + DatabaseContract.IMusicAppTableConstants.ID + ID_TYPE + COMMA
-            + DatabaseContract.IMusicAppTableConstants.PLAYLIST_NAME + COMMA
-            + DatabaseContract.IMusicAppTableConstants.PLAYLIST_SONG_PATH + TEXT_TYPE + " ) ";
+            + DatabaseContract.IMusicAppTables.PLAYLIST_SONGS_TABLE + " ( "
+            + DatabaseContract.IMusicAppTables.ID + ID_TYPE + COMMA
+            + DatabaseContract.IMusicAppTables.PLAYLIST_NAME + TEXT_TYPE + COMMA
+            + DatabaseContract.IMusicAppTables.PLAYLIST_SONG_PATH + TEXT_TYPE + " ) ";
 
 
     public static final String DROP_PLAYLIST_TABLE = "DROP TABLE IF EXISTS " +
-            DatabaseContract.IMusicAppTableConstants.PLAYLIST_TABLE;
+            DatabaseContract.IMusicAppTables.PLAYLIST_TABLE;
 
     public static final String DROP_PLAYLIST_SONGS_TABLE= "DROP TABLE IF EXISTS " +
-            DatabaseContract.IMusicAppTableConstants.PLAYLIST_SONGS_TABLE;
+            DatabaseContract.IMusicAppTables.PLAYLIST_SONGS_TABLE;
 
     public DBOpenHelper(Context context) {
         super(context, DatabaseContract.DB_NAME, null, DATABASE_VERSION);

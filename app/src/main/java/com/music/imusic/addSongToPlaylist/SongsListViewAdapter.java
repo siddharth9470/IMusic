@@ -11,7 +11,7 @@ import com.music.imusic.model.Song;
 
 import java.util.List;
 
-public class SongsListViewAdapter extends BaseAdapter {
+public class SongsListViewAdapter extends BaseAdapter implements ISongListSelector{
 
     private List<Song> songList;
 
@@ -40,5 +40,13 @@ public class SongsListViewAdapter extends BaseAdapter {
         TextView song = view1.findViewById(R.id.song);
         song.setText(songList.get(i).getSongTitle());
         return view1;
+    }
+
+    @Override
+    public void onClickSongsListView(int clickedPosition, boolean isSongPathSavedInDB) {
+        if(songList != null && songList.size() > clickedPosition) {
+            Song song = songList.get(clickedPosition);
+            song.setSongPathSavedInDB(isSongPathSavedInDB);
+        }
     }
 }

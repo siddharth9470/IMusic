@@ -27,6 +27,11 @@ public class SongsListPresenter implements SongsListView.presenter,
     }
 
     @Override
+    public void onClickSongsListView(int clickedPosition, String playlistName) {
+        songsListInteractor.saveSongPathInDB(clickedPosition, playlistName);
+    }
+
+    @Override
     public void retrieveSongsFromStorage() {
         if (songsListInteractor != null) {
             songsListInteractor.allSongFromDevice(this);

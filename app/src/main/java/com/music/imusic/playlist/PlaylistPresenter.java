@@ -35,7 +35,7 @@ public class PlaylistPresenter implements PlaylistView.presenter, PlaylistView.i
 
     @Override
     public void onClickPlaylistView(String playlistName) {
-
+        view.navigateUserToPlaylistDetails(playlistName);
     }
 
     @Override

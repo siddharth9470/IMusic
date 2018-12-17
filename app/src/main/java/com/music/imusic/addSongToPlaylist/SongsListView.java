@@ -13,5 +13,6 @@ public class SongsListView {
 
     interface presenter {
         void retrieveSongsFromStorage();
+        void onClickSongsListView(int clickedPosition, String playlistName);
     }
 }

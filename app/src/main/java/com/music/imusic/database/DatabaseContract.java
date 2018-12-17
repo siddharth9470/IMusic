@@ -4,7 +4,7 @@ public class DatabaseContract {
 
     public static final String DB_NAME = "IMusic_database.db";
 
-    public abstract class IMusicAppTableConstants {
+    public abstract class IMusicAppTables {
         public static final String PLAYLIST_TABLE = "playlist_table";
         public static final String PLAYLIST_NAME = "playlist_name";
 

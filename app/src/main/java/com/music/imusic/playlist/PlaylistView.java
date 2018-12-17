@@ -8,6 +8,7 @@ public class PlaylistView {
 
     interface view{
         void onNoPlaylistFound();
+        void navigateUserToPlaylistDetails(String playlistName);
         void onFinishLoadingPlaylist(List<String> playlistList);
     }
 

@@ -29,7 +29,8 @@
         <activity android:name=".musicPlayer.MusicPlayerActivity" />
         <activity android:name=".addSongToPlaylist.SongsListActivity" />
         <activity android:name=".playlist.PlaylistsActivity" />
-        <activity android:name=".playlist.createPlaylist.CreatePlaylistActivity"></activity>
+        <activity android:name=".playlist.createPlaylist.CreatePlaylistActivity" />
+        <activity android:name=".playlist.playlistDetail.PlaylistDetailsActivity"></activity>
     </application>
 
 </manifest>
